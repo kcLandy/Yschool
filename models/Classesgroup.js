@@ -1,9 +1,9 @@
 import { DataTypes, Model } from 'sequelize';
 import { sequelize } from './index.js';
 
-export class ClassGroup extends Model {}
+export class ClassesGroup extends Model {}
 
-ClassGroup.init(
+ClassesGroup.init(
   {
     id: {
       type: DataTypes.INTEGER.UNSIGNED,
@@ -19,7 +19,7 @@ ClassGroup.init(
       allowNull: false,
     },
   },
-  { sequelize, tableName: 'classGroup', modelName: 'ClassGroup', timestamps: true, underscored: true }
+  { sequelize, tableName: 'classesGroup', modelName: 'ClassesGroup', timestamps: true, underscored: true }
 );
 
-export default ClassGroup;
+export default ClassesGroup;

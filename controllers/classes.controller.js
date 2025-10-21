@@ -1,4 +1,4 @@
-import * as svc from '../services/class.service.js';
+import * as svc from '../services/classes.service.js';
 
 /* GET /classes */
 export async function getClasses(req, res, next) {
@@ -10,14 +10,14 @@ export async function getClasses(req, res, next) {
 }
 
 /* GET /classes/:id */
-export async function getClassById(req, res, next) {
+export async function getClassesById(req, res, next) {
     const classe = await svc.findById(req.params.id);
     if (!classe) return res.status(404).json({ error: 'Classe non trouvée' });
     return res.json(classe);
 }
 
 /* POST /classes */
-export async function createClass(req, res, next) {
+export async function createClasses(req, res, next) {
     try {
         const classe = await svc.create(req.body);
         res.status(201).json(classe);
@@ -28,14 +28,14 @@ export async function createClass(req, res, next) {
 }
 
 /* PUT /classes/:id */
-export async function updateClass(req, res, next) {
+export async function updateClasses(req, res, next) {
     const classe = await svc.update(req.params.id, req.body);
     if (!classe) return res.status(404).json({ error: 'Classe non trouvée' });
     res.json(classe);
 }
 
 /* DELETE /classes/:id */
-export async function deleteClass(req, res, next) {
+export async function deleteClasses(req, res, next) {
     const deleted = await svc.remove(req.params.id);
     if (!deleted) return res.status(404).json({ error: 'Classe non trouvée' });
     res.status(204).send();
