@@ -1,0 +1,29 @@
+{
+  "name": "school-tracking-api",
+  "version": "0.1.0",
+  "description": "API REST versionnée (v1/v2) pour suivi scolaire — Express + Sequelize (squelette)",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "migrate": "sequelize db:migrate",
+    "seed": "sequelize db:seed:all",
+    "test": "jest"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "sequelize": "^6.37.7",
+    "mysql2": "^3.15.2",
+    "jsonwebtoken": "^9.0.2",
+    "bcrypt": "^6.0.0",
+    "nodemailer": "^7.0.9",
+    "axios": "^1.12.2"
+  },
+  "devDependencies": {
+    "jest": "^30.2.0",
+    "supertest": "^7.1.4",
+    "nodemon": "^3.1.10",
+    "sequelize-cli": "^6.6.3",
+    "eslint": "^9.38.0"
+  }
+}

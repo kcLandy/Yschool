@@ -1,0 +1,36 @@
+{
+  "info": {
+    "name": "School API Collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Register (v1)",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"email\": \"teacher@example.com\", \"password\": \"password\", \"name\":\"Alice\", \"role\":\"teacher\" }"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/auth/register"
+        }
+      }
+    },
+    {
+      "name": "Login (v1)",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"email\": \"teacher@example.com\", \"password\": \"password\" }"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/auth/login"
+        }
+      }
+    }
+  ]
+}

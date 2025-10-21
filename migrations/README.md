@@ -1,0 +1,1 @@
+Place your Sequelize migrations here. Example: create-users.js, create-courses.js

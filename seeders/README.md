@@ -1,0 +1,1 @@
+Place your Sequelize seeders here. Example: seed-users.js, seed-courses.js
