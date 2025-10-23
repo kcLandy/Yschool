@@ -1,10 +1,11 @@
-import * as svc from '../services/classesgroup.service.js';
+import * as svc from '../services/classesgroup.services';
+import { serializeClassesGroup, serializeList } from '../serializers/v1/classesgroup.serializer.js';
 
 /* GET /classesgroups */
 export async function getClassesGroups(req, res, next) {
     const groups = await svc.findAll();
     return res.json({
-        data: groups,
+        data: serializeList(groups),
         meta: { version: '1.0' }
     });
 }
@@ -13,14 +14,20 @@ export async function getClassesGroups(req, res, next) {
 export async function getClassesGroupById(req, res, next) {
     const group = await svc.findById(req.params.id);
     if (!group) return res.status(404).json({ error: 'Groupe de classe non trouvé' });
-    return res.json(group);
+    return res.json({
+        data: serializeClassesGroup(group),
+        meta: { version: '1.0' }
+    });
 }
 
 /* POST /classesgroups */
 export async function createClassesGroup(req, res, next) {
     try {
         const group = await svc.create(req.body);
-        res.status(201).json(group);
+        res.status(201).json({
+            data: serializeClassesGroup(group),
+            meta: { version: '1.0' }
+        });
     } catch (err) {
         console.error(err?.original || err);
         res.status(400).json({ error: 'Erreur lors de la création du groupe' });
@@ -31,7 +38,10 @@ export async function createClassesGroup(req, res, next) {
 export async function updateClassesGroup(req, res, next) {
     const group = await svc.update(req.params.id, req.body);
     if (!group) return res.status(404).json({ error: 'Groupe non trouvé' });
-    res.json(group);
+    res.json({
+        data: serializeClassesGroup(group),
+        meta: { version: '1.0' }
+    });
 }
 
 /* DELETE /classesgroups/:id */
