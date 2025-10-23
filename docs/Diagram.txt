@@ -1,0 +1,54 @@
+Table users {
+  id int [pk]
+  name varchar
+  email varchar [unique]
+  passwordHash varchar
+  role enum('admin','teacher','student')
+  createdAt datetime
+  updatedAt datetime
+}
+
+Table classes {
+  id int [pk]
+  name varchar
+  createdAt datetime
+  updatedAt datetime
+}
+
+Table subjects {
+  id int [pk]
+  name varchar
+  createdAt datetime
+  updatedAt datetime
+}
+
+Table schedules {
+  id int [pk]
+  subjectId int [ref: > subjects.id]
+  teacherId int [ref: > users.id]
+  classId int [ref: > classes.id]
+  classroom varchar
+  startTime datetime
+  endTime datetime
+  createdAt datetime
+  updatedAt datetime
+}
+
+Table classGroup {
+  id int [pk]
+  studentId int [ref: > users.id]
+  classId int [ref: > classes.id]
+  createdAt datetime
+  updatedAt datetime
+}
+
+Table grades {
+  id int [pk]
+  studentId int [ref: > users.id]
+  subjectId int [ref: > subjects.id]
+  teacherId int [ref: > users.id]
+  value decimal(5,2)
+  comment text
+  createdAt datetime
+  updatedAt datetime
+}
