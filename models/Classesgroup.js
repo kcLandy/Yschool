@@ -1,25 +1,25 @@
-import { DataTypes, Model } from 'sequelize';
-import { sequelize } from './index.js';
-
-export class ClassesGroup extends Model {}
-
-ClassesGroup.init(
-  {
-    id: {
-      type: DataTypes.INTEGER.UNSIGNED,
-      autoIncrement: true,
-      primaryKey: true,
-    },
-    studentId: {
-      type: DataTypes.INTEGER.UNSIGNED,
-      allowNull: false,
-    },
-    classId: {
-      type: DataTypes.INTEGER.UNSIGNED,
-      allowNull: false,
-    },
-  },
-  { sequelize, tableName: 'classesGroup', modelName: 'ClassesGroup', timestamps: true, underscored: true }
-);
-
-export default ClassesGroup;
+'use strict';
+const {
+  Model
+} = require('sequelize');
+module.exports = (sequelize, DataTypes) => {
+  class ClassesGroup extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      // define association here
+    }
+  }
+  ClassesGroup.init({
+    id: DataTypes.INTEGER,
+    studentId: DataTypes.INTEGER,
+    classId: DataTypes.INTEGER
+  }, {
+    sequelize,
+    modelName: 'ClassesGroup',
+  });
+  return ClassesGroup;
+};
